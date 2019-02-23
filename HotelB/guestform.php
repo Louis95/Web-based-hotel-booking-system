@@ -13,13 +13,13 @@ session_start();
 						$_SESSION['deposit'] = 0;
 						}
 	
-				$result = mysql_query("select * from room");
-					if(mysql_num_rows($result) > 0){
+				$result = mysqli_query($dbhandle,"select * from room");
+					if(mysqli_num_rows($result) > 0){
 	
 				
 						$count = 0;
 						
-						while($row = mysql_fetch_array($result)){
+						while($row = mysqli_fetch_array($result)){
 						
 							if (isset($_POST["qtyroom".$row['room_id'].""])   && !empty($_POST["qtyroom".$row['room_id'].""]) )
 							{
@@ -225,7 +225,7 @@ session_start();
 
 	<div class="large-8 columns blackblur fontcolor" style="padding-top:10px;">
 		<p><b>Guest Details</b><hr class="line"></p>
-		<form action="insertandemail.php" method="post"  onSubmit="return validateForm(this);">
+		<form action="insertandemail.php" method="post" > 
 		  <div class="row">
 
 			<div class="large-6 columns">
@@ -554,7 +554,7 @@ session_start();
 			</div>
 		  </div>
 		  <div class="row">
-			<div class="large-12 columns" style="text-align:right;"><button type="submit" class="button small fontslabo" style="background-color:#2ecc71;" onclick="return confirm('Are you sure you want to continue?')" >Confirm</button>
+			<div class="large-12 columns" style="text-align:right;"><button type="submit" class="button small fontslabo" style="background-color:#2ecc71;" >Confirm</button> <!--onclick="return confirm('Are you sure you want to continue?')" -->
 		  </div>
 
 		  </div>
